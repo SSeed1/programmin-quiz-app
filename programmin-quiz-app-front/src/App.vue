@@ -1,14 +1,26 @@
 <template>
- <router-view/>
+  <router-view/>
 </template>
 
-<style>
+<style lang="scss">
+html {
+  width: 100%;
+  height: 100%;
+  
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  font-family: Rubick, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  overflow: hidden;
 }
 </style>
