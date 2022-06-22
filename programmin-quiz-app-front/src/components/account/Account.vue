@@ -255,12 +255,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../assets/styleVars.scss';
   .main-wrapper {
     width: 750px;
     height: 750px;
-    background-color: #e5e5e58d;
+    background-color: #e5e5e555;
+    border-radius: 4px;
     margin-left: auto;
     margin-right: auto;
   }
