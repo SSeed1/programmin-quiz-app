@@ -1,5 +1,7 @@
 <script setup>
 import { ref, computed} from 'vue'
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const questions = ref([
   {
@@ -58,7 +60,7 @@ const SetAnswer = (e) => {
 	e.target.value = null
 }
 const moveToMainPage = () => {
-  this.$router.push({ name: 'SignIn' })
+	router.push({name: 'Lessons'})
 }
 const NextQuestion = () => {
 	if (currentQuestion.value < questions.value.length - 1) {
@@ -139,8 +141,8 @@ const NextQuestion = () => {
 }
 
 body {
-	background-color: #271c36;
-	color: #FFF;
+	background-color: #271c36 !important;
+	color: #FFF !important;
 }
 
 .app {

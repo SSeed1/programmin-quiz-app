@@ -1,5 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const questions = ref([
   {
@@ -47,6 +49,9 @@ const score = computed(() => {
 	return value
 })
 
+const moveToMainPage = () => {
+	router.push({name: 'Lessons'})
+}
 const getCurrentQuestion = computed(() => {
 	let question = questions.value[currentQuestion.value]
 	question.index = currentQuestion.value
@@ -69,7 +74,7 @@ const NextQuestion = () => {
 </script>
 
 <template>
-	<main class="app">
+	<main class="tests">
 		<h1>The Quiz</h1>
 		
 		<section class="quiz" v-if="!quizCompleted">
@@ -123,7 +128,7 @@ const NextQuestion = () => {
 		<section v-else>
 			<h2>You have finished the quiz!</h2>
 			<p>Your score is {{ score }}/{{ questions.length }}</p>
-
+			<button @click="moveToMainPage">{{'Move To Lessons'}}</button>
 		</section>
 	</main>
 </template>
@@ -137,11 +142,11 @@ const NextQuestion = () => {
 }
 
 body {
-	background-color: #271c36;
-	color: #FFF;
+	background-color: #271c36 !important;
+	color: #FFF !important;
 }
 
-.app {
+.tests {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -186,6 +191,7 @@ h1 {
 	display: block;
 	background-color: #271c36;
 	margin-bottom: 0.5rem;
+	color: #FFF !important;
 	border-radius: 0.5rem;
 	cursor: pointer;
 }
@@ -226,6 +232,8 @@ button {
 	text-transform: uppercase;
 	font-size: 1.2rem;
 	border-radius: 0.5rem;
+	margin-top: 5px;
+  margin-left: 85px;
 }
 
 button:disabled {
