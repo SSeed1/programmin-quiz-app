@@ -65,6 +65,10 @@ export default {
     background-color: #E5E5E5;
     overflow: scroll;
   }
+  .logo {
+    color: $fontColorBlack;
+    font-size: $fontSizeModalTitle;
+  }
   .header {
     width: 100%;
     height: 64px;

@@ -25,7 +25,7 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: $appActionColor;
-    color: $fontColorWhite;
+    color: $fontColorBlack;
     margin-top: 20px;
     cursor: pointer;
     border-radius: 4px;
