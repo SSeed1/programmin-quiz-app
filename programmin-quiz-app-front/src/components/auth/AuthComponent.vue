@@ -199,16 +199,16 @@ export default {
     //   return phonePattern.test(this.phone)
     // },
     setErrorMessage(error) {
-      if (this.currentMode === this.modes.SIGN_UP) {
-        if (error.response.status === 400) {
-          this.errorMessage = 'This email address has already been used. Please sign in, or select "forgot password"'
-          return
-        }
-      }
-      if (error.response.status === 400) {
-        this.errorMessage = 'Email or password is not correct'
-        return
-      }
+      // if (this.currentMode === this.modes.SIGN_UP) {
+      //   if (error.response.status === 400) {
+      //     this.errorMessage = 'This email address has already been used. Please sign in, or select "forgot password"'
+      //     return
+      //   }
+      // }
+      // if (error.response.status === 400) {
+      //   this.errorMessage = 'Email or password is not correct'
+      //   return
+      // }
     },
     validateCredentials() {
       if (!this.validateEmail()) {
@@ -246,20 +246,33 @@ export default {
       return true
     },
     async handleSignIn() {
-      this.$router.push({name:'Lessons'})
-    },
-    async handleSignUp() {
       const data = {
-        new_user: {
+        user: {
           email: this.email,
           password: this.password,
-          full_name: this.fullName,
-          phone: this.phone,
         }
       }
 
       try {
-        // await this.signUp(data)
+        await this.signIn(data)
+        this.$router.push({ name: 'Lessons' })
+      } catch (error) {
+        console.log('==== error in handleSignIn: ', error);
+        this.setErrorMessage(error)
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async handleSignUp() {
+      const data = {
+          email: this.email,
+          password: this.password,
+          // full_name: this.fullName,
+          // phone: this.phone,
+      }
+
+      try {
+        await this.signUp(data)
         this.$router.push({ name: 'Lessons' })
       } catch (error) {
         console.log('==== error in handleSignUp: ', error);
