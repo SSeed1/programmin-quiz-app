@@ -246,6 +246,7 @@ export default {
       return true
     },
     async handleSignIn() {
+      this.$router.push({name:'Lessons'})
     },
     async handleSignUp() {
       const data = {
@@ -258,8 +259,8 @@ export default {
       }
 
       try {
-        await this.signUp(data)
-        this.$router.push({ name: 'Subscriptions' })
+        // await this.signUp(data)
+        this.$router.push({ name: 'Lessons' })
       } catch (error) {
         console.log('==== error in handleSignUp: ', error);
         this.setErrorMessage(error)
